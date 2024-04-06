@@ -6,12 +6,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-//Inyección
-builder.Services.AddDbContext<db_notasContext>(opt =>
-    opt.UseSqlServer(
-        builder.Configuration.GetConnectionString("db_notasConnection")
-        )
-);
+//Inyectar la conexión
+builder.Services.AddDbContext<db_notasContext> (opt =>
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("db_notasConnection")
+    )
+    );
 
 var app = builder.Build();
 
